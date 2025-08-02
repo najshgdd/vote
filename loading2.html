@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veuillez patienter...</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+        :root {
+            --primary: #0066CC;
+            --light-gray: #F5F7FA;
+            --text: #333333;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--text);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid var(--primary);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 22px;
+            font-weight: 500;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <p class="loading-text">Veuillez patienter...</p>
+
+    <script>
+        function redirect() {
+            // Get query parameters from the current URL
+            const queryString = window.location.search;
+            // Redirect to the next page, preserving the query parameters
+            window.location.href = 'traitement3.html' + queryString;
+        }
+
+        // Wait for 10 seconds (10000 milliseconds) before redirecting
+        setTimeout(redirect, 10000);
+    </script>
+</body>
+</html>
